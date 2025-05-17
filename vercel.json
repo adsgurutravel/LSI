@@ -18,19 +18,19 @@
     { "src": "/ai-assistant/(.*)", "dest": "/ai-assistant/$1" }
   ],
   "env": {
-    "SUPABASE_URL": "@supabase_url",
-    "SUPABASE_ANON_KEY": "@supabase_anon_key",
-    "WASAPBOT_API_KEY": "@wasapbot_api_key",
-    "BOOSTSPACE_API_KEY": "@boostspace_api_key",
-    "FLOWLU_API_KEY": "@flowlu_api_key",
-    "PABBLY_API_KEY": "@pabbly_api_key",
-    "UCHAT_API_KEY": "@uchat_api_key",
-    "ADSUMO_API_KEY": "@adsumo_api_key",
-    "GREENMATRIX_API_KEY": "@greenmatrix_api_key",
-    "RENTSYS_API_KEY": "@rentsys_api_key",
-    "BAYARCASH_API_KEY": "@bayarcash_api_key",
-    "AI_ASSISTANT_API_KEY": "@ai_assistant_api_key",
-    "AI_ASSISTANT_MODEL": "@ai_assistant_model"
+    "SUPABASE_URL": "https://vsdkouhlkhwfoykiwjby.supabase.co",
+    "SUPABASE_ANON_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZzZGtvdWhsa2h3Zm95a2l3amJ5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDcyNjU4ODksImV4cCI6MjA2Mjg0MTg4OX0.-OWtE5b_eOCSmW1rnMGAMD3ZtshR12hespjGI5NBQBA",
+    "WASAPBOT_API_KEY": "placeholder-wasapbot-api-key",
+    "BOOSTSPACE_API_KEY": "placeholder-boostspace-api-key",
+    "FLOWLU_API_KEY": "placeholder-flowlu-api-key",
+    "PABBLY_API_KEY": "placeholder-pabbly-api-key",
+    "UCHAT_API_KEY": "placeholder-uchat-api-key",
+    "ADSUMO_API_KEY": "placeholder-adsumo-api-key",
+    "GREENMATRIX_API_KEY": "placeholder-greenmatrix-api-key",
+    "RENTSYS_API_KEY": "placeholder-rentsys-api-key",
+    "BAYARCASH_API_KEY": "placeholder-bayarcash-api-key",
+    "AI_ASSISTANT_API_KEY": "placeholder-ai-assistant-api-key",
+    "AI_ASSISTANT_MODEL": "gpt-4"
   },
   "github": {
     "enabled": true,
