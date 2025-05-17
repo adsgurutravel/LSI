@@ -1,0 +1,166 @@
+{
+  "system": {
+    "name": "AmriTravel Booking System",
+    "version": "1.0.0",
+    "description": "A complete travel booking system with enhanced features and integrations",
+    "theme": "yellow",
+    "debug": false,
+    "logLevel": "info"
+  },
+  "contact": {
+    "email": "enquiry@amritravel.my",
+    "phone": "+60123456789",
+    "address": "123 Main Street, City Name, State, Postal Code, Malaysia",
+    "company": "AmriTravel Sdn Bhd",
+    "registration": "123456789-X"
+  },
+  "api": {
+    "baseUrl": "/api",
+    "endpoints": {
+      "booking": "/onBooking",
+      "lead": "/onLead",
+      "plugin": "/triggerPlugin"
+    },
+    "timeout": 30000
+  },
+  "integrations": {
+    "supabase": {
+      "enabled": true,
+      "tables": {
+        "bookings": "bookings",
+        "users": "users",
+        "vehicles": "vehicles",
+        "leads": "leads",
+        "contacts": "contacts",
+        "reviews": "reviews"
+      }
+    },
+    "wasapbot": {
+      "enabled": true,
+      "apiUrl": "https://api.wasapbot.my/api/v1"
+    },
+    "boostspace": {
+      "enabled": true,
+      "apiUrl": "https://api.boost.space/v1"
+    },
+    "flowlu": {
+      "enabled": true,
+      "apiUrl": "https://api.flowlu.com/v1"
+    },
+    "pabbly": {
+      "enabled": true,
+      "webhookUrl": "https://connect.pabbly.com/workflow/sendwebhookdata"
+    },
+    "uchat": {
+      "enabled": true,
+      "apiUrl": "https://api.uchat.com.my/api/v1",
+      "flowId": "your-flow-id"
+    },
+    "adsumo": {
+      "enabled": true,
+      "apiUrl": "https://api.adsumo.com/v1",
+      "pixelId": "your-pixel-id"
+    },
+    "greenmatrix": {
+      "enabled": true,
+      "apiUrl": "https://api.greenmatrix.com/v1"
+    },
+    "rentsys": {
+      "enabled": true,
+      "apiUrl": "https://api.rentsys.com/v1"
+    },
+    "bayarcash": {
+      "enabled": true,
+      "apiUrl": "https://api.bayarcash.com/v1",
+      "merchantId": "your-merchant-id",
+      "callbackUrl": "https://amritravel.my/api/payment/callback"
+    }
+  },
+  "plugins": {
+    "autoActivate": [
+      "wasapbot",
+      "boostspace",
+      "pabbly"
+    ]
+  },
+  "booking": {
+    "defaultCurrency": "MYR",
+    "minDuration": 1,
+    "maxDuration": 30,
+    "advanceBookingDays": 90,
+    "depositPercentage": 30,
+    "cancellationPolicy": {
+      "freeCancellationHours": 48,
+      "partialRefundHours": 24,
+      "partialRefundPercentage": 50
+    }
+  },
+  "vehicles": {
+    "categories": [
+      "sedan",
+      "compact",
+      "mpv",
+      "luxury-mpv",
+      "suv"
+    ],
+    "features": [
+      "air-conditioning",
+      "automatic",
+      "bluetooth",
+      "gps",
+      "usb-charger"
+    ],
+    "locations": [
+      "Penang International Airport",
+      "Kuala Lumpur International Airport",
+      "Langkawi International Airport",
+      "Kota Kinabalu International Airport",
+      "Kuching International Airport"
+    ]
+  },
+  "marketing": {
+    "utmParameters": [
+      "utm_source",
+      "utm_medium",
+      "utm_campaign",
+      "utm_term",
+      "utm_content"
+    ],
+    "socialMedia": {
+      "facebook": "https://www.facebook.com/amritravel",
+      "instagram": "https://www.instagram.com/amritravel",
+      "twitter": "https://twitter.com/amritravel",
+      "linkedin": "https://www.linkedin.com/company/amritravel"
+    }
+  },
+  "aiAssistant": {
+    "enabled": true,
+    "commands": [
+      "/booking list",
+      "/booking find",
+      "/vehicle list",
+      "/vehicle find",
+      "/marketing stats",
+      "/help"
+    ],
+    "prompts": {
+      "booking": "You are an AI assistant for AmriTravel, a car rental service. Help with booking management.",
+      "vehicle": "You are an AI assistant for AmriTravel, a car rental service. Help with vehicle management.",
+      "marketing": "You are an AI assistant for AmriTravel, a car rental service. Help with marketing campaigns.",
+      "general": "You are an AI assistant for AmriTravel, a car rental service. Provide helpful information."
+    }
+  },
+  "routes": {
+    "home": "/",
+    "booking": "/booking",
+    "car": "/car",
+    "thankyou": "/thankyou",
+    "contact": "/contact",
+    "attractions": "/attractions",
+    "blogs": "/blogs",
+    "help": "/help",
+    "login": "/login",
+    "register": "/register",
+    "admin": "/admin"
+  }
+}

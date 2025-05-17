@@ -1,0 +1,1383 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Car Rental in Malaysia & Flexible Pickup - AmriTravel</title>
+    <link rel="stylesheet" href="/assets/css/style.css" />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- Favicon -->
+    <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon" />
+    <!-- Meta tags for SEO -->
+    <meta
+      name="description"
+      content="AmriTravel - Your gateway to discovering Malaysia with affordable car rentals and travel packages."
+    />
+    <meta
+      name="keywords"
+      content="car rental, travel booking, Malaysia travel, AmriTravel"
+    />
+  </head>
+  <body>
+    <!-- Welcome Popup -->
+    <div class="welcome-popup" id="welcome-popup">
+      <div class="welcome-content">
+        <div class="welcome-slider">
+          <div class="welcome-slide active">
+            <img
+              src="/assets/img/promotions/welcome-promo.png"
+              alt="Welcome Promotion"
+            />
+            <a href="/promotions/new-to-amritravel" class="promo-link"
+              >View Promo</a
+            >
+          </div>
+        </div>
+        <button class="close-popup" id="close-popup">&times;</button>
+        <div class="popup-footer">
+          <label>
+            <input type="checkbox" id="dont-show-again" />
+            Do not show this again
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+      <div class="container">
+        <div class="logo">
+          <a href="/">
+            <img src="/assets/img/logo-amritravel.svg" alt="AmriTravel Logo" />
+          </a>
+        </div>
+        <div class="contact-info">
+          <h6>CONTACT</h6>
+          <a href="tel:+60123456789">+60 12-3456789</a>
+          <p>enquiry@amritravel.my</p>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="/" class="active">Car Rental</a></li>
+            <li><a href="/attractions">Attractions</a></li>
+            <li><a href="/blogs">Blog</a></li>
+            <li><a href="/help">Help</a></li>
+            <li class="language-dropdown">
+              <a href="#"><i class="fas fa-globe"></i></a>
+              <ul class="dropdown">
+                <li>Select Language</li>
+                <li><a href="/">English</a></li>
+                <li><a href="/ms">Bahasa Malaysia</a></li>
+              </ul>
+            </li>
+            <li><a href="/login">Login</a></li>
+            <li><a href="/register">Create Account</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <h1>AmriTravel Car Rental</h1>
+        <h3>Your Gateway to Discovering Malaysia</h3>
+
+        <div class="service-tabs">
+          <a href="/" class="active">Car Rental</a>
+          <a href="/attractions">Attractions</a>
+          <div class="coming-soon-tab">
+            <span>COMING SOON</span>
+            <a href="#" class="disabled">Hotel</a>
+          </div>
+          <div class="coming-soon-tab">
+            <span>COMING SOON</span>
+            <a href="#" class="disabled">Chauffeur</a>
+          </div>
+        </div>
+
+        <!-- Search Form -->
+        <div class="search-form">
+          <div class="form-group">
+            <label for="pickup-location">Pickup Location</label>
+            <div class="location-input">
+              <input
+                type="text"
+                id="pickup-location"
+                placeholder="Tell us your starting point"
+              />
+              <button class="location-dropdown-btn" id="pickup-dropdown-btn">
+                <i class="fas fa-chevron-down"></i>
+              </button>
+            </div>
+            <div class="location-dropdown" id="pickup-dropdown">
+              <div class="location-dropdown-header">
+                <h6>Popular Pick-up Points</h6>
+              </div>
+              <ul>
+                <li>
+                  <a href="#" data-location="Kuala Lumpur International Airport"
+                    >Kuala Lumpur International Airport</a
+                  >
+                </li>
+                <li><a href="#" data-location="KL Sentral">KL Sentral</a></li>
+                <li>
+                  <a href="#" data-location="Penang International Airport"
+                    >Penang International Airport</a
+                  >
+                </li>
+                <li>
+                  <a href="#" data-location="Langkawi International Airport"
+                    >Langkawi International Airport</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    data-location="Kota Kinabalu International Airport"
+                    >Kota Kinabalu International Airport</a
+                  >
+                </li>
+                <li>
+                  <a href="#" data-location="Kuching International Airport"
+                    >Kuching International Airport</a
+                  >
+                </li>
+              </ul>
+              <button class="confirm-location-btn">Confirm</button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="return-location">Return Location</label>
+            <div class="location-input">
+              <input
+                type="text"
+                id="return-location"
+                placeholder="Select return location"
+              />
+              <button class="location-dropdown-btn" id="return-dropdown-btn">
+                <i class="fas fa-chevron-down"></i>
+              </button>
+            </div>
+            <div class="location-dropdown" id="return-dropdown">
+              <div class="location-dropdown-header">
+                <h6>Popular Return Points</h6>
+              </div>
+              <ul>
+                <li>
+                  <a href="#" data-location="Kuala Lumpur International Airport"
+                    >Kuala Lumpur International Airport</a
+                  >
+                </li>
+                <li><a href="#" data-location="KL Sentral">KL Sentral</a></li>
+                <li>
+                  <a href="#" data-location="Penang International Airport"
+                    >Penang International Airport</a
+                  >
+                </li>
+                <li>
+                  <a href="#" data-location="Langkawi International Airport"
+                    >Langkawi International Airport</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    data-location="Kota Kinabalu International Airport"
+                    >Kota Kinabalu International Airport</a
+                  >
+                </li>
+                <li>
+                  <a href="#" data-location="Kuching International Airport"
+                    >Kuching International Airport</a
+                  >
+                </li>
+              </ul>
+              <button class="confirm-location-btn">Confirm</button>
+            </div>
+            <div class="checkbox">
+              <input type="checkbox" id="different-location" />
+              <label for="different-location">Return to another location</label>
+            </div>
+          </div>
+
+          <div class="form-group date-time">
+            <label for="pickup-date">Pickup Date</label>
+            <input type="date" id="pickup-date" />
+            <select id="pickup-time">
+              <option value="06:00">6:00 AM</option>
+              <option value="06:15">6:15 AM</option>
+              <option value="06:30">6:30 AM</option>
+              <option value="06:45">6:45 AM</option>
+              <option value="07:00">7:00 AM</option>
+              <option value="07:15">7:15 AM</option>
+              <option value="07:30">7:30 AM</option>
+              <option value="07:45">7:45 AM</option>
+              <option value="08:00">8:00 AM</option>
+              <option value="08:15">8:15 AM</option>
+              <option value="08:30">8:30 AM</option>
+              <option value="08:45">8:45 AM</option>
+              <option value="09:00">9:00 AM</option>
+              <option value="09:15">9:15 AM</option>
+              <option value="09:30">9:30 AM</option>
+              <option value="09:45">9:45 AM</option>
+              <option value="10:00">10:00 AM</option>
+              <option value="10:15">10:15 AM</option>
+              <option value="10:30">10:30 AM</option>
+              <option value="10:45">10:45 AM</option>
+              <option value="11:00">11:00 AM</option>
+              <option value="11:15">11:15 AM</option>
+              <option value="11:30">11:30 AM</option>
+              <option value="11:45">11:45 AM</option>
+              <option value="12:00">12:00 PM</option>
+              <option value="12:15">12:15 PM</option>
+              <option value="12:30">12:30 PM</option>
+              <option value="12:45">12:45 PM</option>
+              <option value="13:00">1:00 PM</option>
+              <option value="13:15">1:15 PM</option>
+              <option value="13:30">1:30 PM</option>
+              <option value="13:45">1:45 PM</option>
+              <option value="14:00">2:00 PM</option>
+              <option value="14:15">2:15 PM</option>
+              <option value="14:30">2:30 PM</option>
+              <option value="14:45">2:45 PM</option>
+              <option value="15:00">3:00 PM</option>
+              <option value="15:15">3:15 PM</option>
+              <option value="15:30">3:30 PM</option>
+              <option value="15:45">3:45 PM</option>
+              <option value="16:00">4:00 PM</option>
+              <option value="16:15">4:15 PM</option>
+              <option value="16:30">4:30 PM</option>
+              <option value="16:45">4:45 PM</option>
+              <option value="17:00">5:00 PM</option>
+              <option value="17:15">5:15 PM</option>
+              <option value="17:30">5:30 PM</option>
+              <option value="17:45">5:45 PM</option>
+              <option value="18:00">6:00 PM</option>
+              <option value="18:15">6:15 PM</option>
+              <option value="18:30">6:30 PM</option>
+              <option value="18:45">6:45 PM</option>
+              <option value="19:00">7:00 PM</option>
+              <option value="19:15">7:15 PM</option>
+              <option value="19:30">7:30 PM</option>
+              <option value="19:45">7:45 PM</option>
+              <option value="20:00">8:00 PM</option>
+              <option value="20:15">8:15 PM</option>
+              <option value="20:30">8:30 PM</option>
+              <option value="20:45">8:45 PM</option>
+              <option value="21:00">9:00 PM</option>
+              <option value="21:15">9:15 PM</option>
+              <option value="21:30">9:30 PM</option>
+              <option value="21:45">9:45 PM</option>
+              <option value="22:00">10:00 PM</option>
+              <option value="22:15">10:15 PM</option>
+              <option value="22:30">10:30 PM</option>
+              <option value="22:45">10:45 PM</option>
+              <option value="23:00">11:00 PM</option>
+            </select>
+          </div>
+
+          <div class="form-group date-time">
+            <label for="return-date">Return Date</label>
+            <input type="date" id="return-date" />
+            <select id="return-time">
+              <option value="06:00">6:00 AM</option>
+              <option value="06:15">6:15 AM</option>
+              <option value="06:30">6:30 AM</option>
+              <option value="06:45">6:45 AM</option>
+              <option value="07:00">7:00 AM</option>
+              <option value="07:15">7:15 AM</option>
+              <option value="07:30">7:30 AM</option>
+              <option value="07:45">7:45 AM</option>
+              <option value="08:00">8:00 AM</option>
+              <option value="08:15">8:15 AM</option>
+              <option value="08:30">8:30 AM</option>
+              <option value="08:45">8:45 AM</option>
+              <option value="09:00">9:00 AM</option>
+              <option value="09:15">9:15 AM</option>
+              <option value="09:30">9:30 AM</option>
+              <option value="09:45">9:45 AM</option>
+              <option value="10:00">10:00 AM</option>
+              <option value="10:15">10:15 AM</option>
+              <option value="10:30">10:30 AM</option>
+              <option value="10:45">10:45 AM</option>
+              <option value="11:00">11:00 AM</option>
+              <option value="11:15">11:15 AM</option>
+              <option value="11:30">11:30 AM</option>
+              <option value="11:45">11:45 AM</option>
+              <option value="12:00">12:00 PM</option>
+              <option value="12:15">12:15 PM</option>
+              <option value="12:30">12:30 PM</option>
+              <option value="12:45">12:45 PM</option>
+              <option value="13:00">1:00 PM</option>
+              <option value="13:15">1:15 PM</option>
+              <option value="13:30">1:30 PM</option>
+              <option value="13:45">1:45 PM</option>
+              <option value="14:00">2:00 PM</option>
+              <option value="14:15">2:15 PM</option>
+              <option value="14:30">2:30 PM</option>
+              <option value="14:45">2:45 PM</option>
+              <option value="15:00">3:00 PM</option>
+              <option value="15:15">3:15 PM</option>
+              <option value="15:30">3:30 PM</option>
+              <option value="15:45">3:45 PM</option>
+              <option value="16:00">4:00 PM</option>
+              <option value="16:15">4:15 PM</option>
+              <option value="16:30">4:30 PM</option>
+              <option value="16:45">4:45 PM</option>
+              <option value="17:00">5:00 PM</option>
+              <option value="17:15">5:15 PM</option>
+              <option value="17:30">5:30 PM</option>
+              <option value="17:45">5:45 PM</option>
+              <option value="18:00">6:00 PM</option>
+              <option value="18:15">6:15 PM</option>
+              <option value="18:30">6:30 PM</option>
+              <option value="18:45">6:45 PM</option>
+              <option value="19:00">7:00 PM</option>
+              <option value="19:15">7:15 PM</option>
+              <option value="19:30">7:30 PM</option>
+              <option value="19:45">7:45 PM</option>
+              <option value="20:00">8:00 PM</option>
+              <option value="20:15">8:15 PM</option>
+              <option value="20:30">8:30 PM</option>
+              <option value="20:45">8:45 PM</option>
+              <option value="21:00">9:00 PM</option>
+              <option value="21:15">9:15 PM</option>
+              <option value="21:30">9:30 PM</option>
+              <option value="21:45">9:45 PM</option>
+              <option value="22:00">10:00 PM</option>
+              <option value="22:15">10:15 PM</option>
+              <option value="22:30">10:30 PM</option>
+              <option value="22:45">10:45 PM</option>
+              <option value="23:00">11:00 PM</option>
+            </select>
+          </div>
+
+          <button type="submit" class="search-btn">Search</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works">
+      <div class="container">
+        <h2>Rent a car in Malaysia at your fingertips</h2>
+
+        <div class="steps">
+          <div class="step">
+            <img
+              src="/assets/img/icon/icon-choose-car.svg"
+              alt="Search & Explore"
+            />
+            <h3>Search & Explore</h3>
+            <p>
+              Find vehicles and get quotes that suits your budget and style.
+            </p>
+          </div>
+
+          <div class="step">
+            <img
+              src="/assets/img/icon/icon-payment-secure.svg"
+              alt="Book & Pay"
+            />
+            <h3>Book & Pay</h3>
+            <p>Select and confirm your dates and book securely.</p>
+          </div>
+
+          <div class="step">
+            <img src="/assets/img/icon/icon-car.svg" alt="Travel & Enjoy" />
+            <h3>Travel & Enjoy</h3>
+            <p>Collect your car and live like a local anywhere in Malaysia.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Vehicles Section -->
+    <section class="vehicles">
+      <div class="container">
+        <h2>Our Vehicles</h2>
+
+        <div class="vehicle-tabs">
+          <button class="tab-btn active" data-category="all">All</button>
+          <button class="tab-btn" data-category="sedan">Sedan</button>
+          <button class="tab-btn" data-category="compact">Compact</button>
+          <button class="tab-btn" data-category="mpv">MPV</button>
+          <button class="tab-btn" data-category="luxury-mpv">Luxury MPV</button>
+        </div>
+
+        <div class="vehicle-grid" id="vehicle-grid">
+          <!-- Vehicle cards will be loaded dynamically via JavaScript -->
+          <div class="vehicle-card sedan">
+            <div class="deal-badge">Today's Deal</div>
+            <img
+              src="/assets/img/vehicles/perodua-bezza.jpg"
+              alt="Perodua Bezza 1.3 (A)"
+            />
+            <h5>Perodua Bezza 1.3 (A)</h5>
+            <div class="vehicle-features">
+              <div class="feature">
+                <img
+                  src="/assets/img/icon/icon-passengers.svg"
+                  alt="Passengers"
+                />5
+              </div>
+              <div class="feature">
+                <img src="/assets/img/icon/icon-baggage.svg" alt="Baggage" />2
+              </div>
+              <div class="feature">
+                <img src="/assets/img/icon/icon-door.svg" alt="Doors" />4
+              </div>
+              <div class="feature">
+                <img
+                  src="/assets/img/icon/icon-aircond.svg"
+                  alt="Air Conditioning"
+                />Yes
+              </div>
+              <div class="feature">
+                <img
+                  src="/assets/img/icon/icon-transmission.svg"
+                  alt="Transmission"
+                />A
+              </div>
+              <div class="feature">
+                <img src="/assets/img/icon/icon-oil.svg" alt="Fuel" />Petrol
+              </div>
+            </div>
+            <hr class="vehicle-divider" />
+            <div class="vehicle-price">
+              <div class="regular-price">From RM <span>178.00</span></div>
+              <div class="discount-price">RM <span>158.00</span></div>
+              <div class="units-left">5 units left!</div>
+            </div>
+            <a href="/car?id=1" class="book-btn">Book Now</a>
+          </div>
+
+          <div class="vehicle-card sedan">
+            <div class="deal-badge">Today's Deal</div>
+            <img
+              src="/assets/img/vehicles/proton-saga.jpg"
+              alt="Proton Saga New Variant 1.3 (A)"
+            />
+            <h5>Proton Saga New Variant 1.3 (A)</h5>
+            <div class="vehicle-features">
+              <div class="feature">
+                <img
+                  src="/assets/img/icon/icon-passengers.svg"
+                  alt="Passengers"
+                />5
+              </div>
+              <div class="feature">
+                <img src="/assets/img/icon/icon-baggage.svg" alt="Baggage" />2
+              </div>
+              <div class="feature">
+                <img src="/assets/img/icon/icon-door.svg" alt="Doors" />4
+              </div>
+              <div class="feature">
+                <img
+                  src="/assets/img/icon/icon-aircond.svg"
+                  alt="Air Conditioning"
+                />Yes
+              </div>
+              <div class="feature">
+                <img
+                  src="/assets/img/icon/icon-transmission.svg"
+                  alt="Transmission"
+                />A
+              </div>
+              <div class="feature">
+                <img src="/assets/img/icon/icon-oil.svg" alt="Fuel" />Petrol
+              </div>
+            </div>
+            <hr class="vehicle-divider" />
+            <div class="vehicle-price">
+              <div class="regular-price">From RM <span>199.00</span></div>
+              <div class="discount-price">RM <span>169.00</span></div>
+              <div class="units-left">5 units left!</div>
+            </div>
+            <a href="/car?id=2" class="book-btn">Book Now</a>
+          </div>
+
+          <div class="vehicle-card sedan">
+            <div class="deal-badge">Today's Deal</div>
+            <img
+              src="/assets/img/vehicles/proton-persona.jpg"
+              alt="Proton Persona New Variant 1.6 (A)"
+            />
+            <h5>Proton Persona New Variant 1.6 (A)</h5>
+            <div class="vehicle-features">
+              <div class="feature">
+                <img
+                  src="/assets/img/icon/icon-passengers.svg"
+                  alt="Passengers"
+                />5
+              </div>
+              <div class="feature">
+                <img src="/assets/img/icon/icon-baggage.svg" alt="Baggage" />4
+              </div>
+              <div class="feature">
+                <img src="/assets/img/icon/icon-door.svg" alt="Doors" />4
+              </div>
+              <div class="feature">
+                <img
+                  src="/assets/img/icon/icon-aircond.svg"
+                  alt="Air Conditioning"
+                />Yes
+              </div>
+              <div class="feature">
+                <img
+                  src="/assets/img/icon/icon-transmission.svg"
+                  alt="Transmission"
+                />A
+              </div>
+              <div class="feature">
+                <img src="/assets/img/icon/icon-oil.svg" alt="Fuel" />Petrol
+              </div>
+            </div>
+            <hr class="vehicle-divider" />
+            <div class="vehicle-price">
+              <div class="regular-price">From RM <span>166.00</span></div>
+              <div class="discount-price">RM <span>146.00</span></div>
+              <div class="units-left">5 units left!</div>
+            </div>
+            <a href="/car?id=3" class="book-btn">Book Now</a>
+          </div>
+
+          <div class="vehicle-card sedan">
+            <div class="deal-badge">Today's Deal</div>
+            <img
+              src="/assets/img/vehicles/toyota-vios.jpg"
+              alt="Toyota Vios New Variant 1.5 (A)"
+            />
+            <h5>Toyota Vios New Variant 1.5 (A)</h5>
+            <div class="vehicle-features">
+              <div class="feature">
+                <img
+                  src="/assets/img/icon/icon-passengers.svg"
+                  alt="Passengers"
+                />5
+              </div>
+              <div class="feature">
+                <img src="/assets/img/icon/icon-baggage.svg" alt="Baggage" />3
+              </div>
+              <div class="feature">
+                <img src="/assets/img/icon/icon-door.svg" alt="Doors" />4
+              </div>
+              <div class="feature">
+                <img
+                  src="/assets/img/icon/icon-aircond.svg"
+                  alt="Air Conditioning"
+                />Yes
+              </div>
+              <div class="feature">
+                <img
+                  src="/assets/img/icon/icon-transmission.svg"
+                  alt="Transmission"
+                />A
+              </div>
+              <div class="feature">
+                <img src="/assets/img/icon/icon-oil.svg" alt="Fuel" />Petrol
+              </div>
+            </div>
+            <hr class="vehicle-divider" />
+            <div class="vehicle-price">
+              <div class="regular-price">From RM <span>270.00</span></div>
+              <div class="discount-price">RM <span>220.00</span></div>
+              <div class="units-left">5 units left!</div>
+            </div>
+            <a href="/car?id=4" class="book-btn">Book Now</a>
+          </div>
+
+          <div class="vehicle-card compact">
+            <div class="deal-badge">Today's Deal</div>
+            <img
+              src="/assets/img/vehicles/perodua-myvi.jpg"
+              alt="Perodua Myvi New Variant 1.5 (A)"
+            />
+            <h5>Perodua Myvi New Variant 1.5 (A)</h5>
+            <div class="vehicle-features">
+              <div class="feature">
+                <img
+                  src="/assets/img/icon/icon-passengers.svg"
+                  alt="Passengers"
+                />4
+              </div>
+              <div class="feature">
+                <img src="/assets/img/icon/icon-baggage.svg" alt="Baggage" />2
+              </div>
+              <div class="feature">
+                <img src="/assets/img/icon/icon-door.svg" alt="Doors" />4
+              </div>
+              <div class="feature">
+                <img
+                  src="/assets/img/icon/icon-aircond.svg"
+                  alt="Air Conditioning"
+                />Yes
+              </div>
+              <div class="feature">
+                <img
+                  src="/assets/img/icon/icon-transmission.svg"
+                  alt="Transmission"
+                />A
+              </div>
+              <div class="feature">
+                <img src="/assets/img/icon/icon-oil.svg" alt="Fuel" />Petrol
+              </div>
+            </div>
+            <hr class="vehicle-divider" />
+            <div class="vehicle-price">
+              <div class="regular-price">From RM <span>181.00</span></div>
+              <div class="discount-price">RM <span>151.00</span></div>
+              <div class="units-left">5 units left!</div>
+            </div>
+            <a href="/car?id=5" class="book-btn">Book Now</a>
+          </div>
+
+          <div class="vehicle-card compact">
+            <div class="deal-badge">Today's Deal</div>
+            <img
+              src="/assets/img/vehicles/perodua-axia.jpg"
+              alt="Perodua Axia 1.0 (A)"
+            />
+            <h5>Perodua Axia 1.0 (A)</h5>
+            <div class="vehicle-features">
+              <div class="feature">
+                <img
+                  src="/assets/img/icon/icon-passengers.svg"
+                  alt="Passengers"
+                />4
+              </div>
+              <div class="feature">
+                <img src="/assets/img/icon/icon-baggage.svg" alt="Baggage" />2
+              </div>
+              <div class="feature">
+                <img src="/assets/img/icon/icon-door.svg" alt="Doors" />4
+              </div>
+              <div class="feature">
+                <img
+                  src="/assets/img/icon/icon-aircond.svg"
+                  alt="Air Conditioning"
+                />Yes
+              </div>
+              <div class="feature">
+                <img
+                  src="/assets/img/icon/icon-transmission.svg"
+                  alt="Transmission"
+                />A
+              </div>
+              <div class="feature">
+                <img src="/assets/img/icon/icon-oil.svg" alt="Fuel" />Petrol
+              </div>
+            </div>
+            <hr class="vehicle-divider" />
+            <div class="vehicle-price">
+              <div class="regular-price">From RM <span>118.00</span></div>
+              <div class="discount-price">RM <span>108.00</span></div>
+              <div class="units-left">5 units left!</div>
+            </div>
+            <a href="/car?id=6" class="book-btn">Book Now</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews">
+      <div class="container">
+        <h2>Our Reviews</h2>
+
+        <div class="review-slider" id="review-slider">
+          <!-- Reviews will be loaded dynamically via JavaScript -->
+          <div class="review-slide">
+            <div class="review-car">
+              <img
+                src="/assets/img/vehicles/toyota-yaris.jpg"
+                alt="Toyota Yaris 1.5 (A)"
+              />
+            </div>
+            <div class="review-content">
+              <p class="review-text">
+                " The service is excellent. The car was very clean n ready for
+                pick up on time. The in charge person was professional n warm.
+                Will surely choose AmriTravel again in the future.. "
+              </p>
+              <div class="review-author">
+                <p class="author-name">By Astuty binti Amrin</p>
+                <p class="review-date">2 weeks ago</p>
+              </div>
+              <p class="car-model">Toyota Yaris 1.5 (A)</p>
+            </div>
+          </div>
+
+          <div class="review-slide">
+            <div class="review-car">
+              <img
+                src="/assets/img/vehicles/perodua-axia.jpg"
+                alt="Perodua Axia 1.0 (A)"
+              />
+            </div>
+            <div class="review-content">
+              <p class="review-text">
+                " Had a great experience with AmriTravel! We decided to hire a
+                car last minute and had the car delivered to our accomodation
+                within two hours of booking. Very responsive and helpful to any
+                questions we had. Would 100% book again and would recommend to
+                others for an easy, carefree and cost effective way to get
+                around the island ☺️ "
+              </p>
+              <div class="review-author">
+                <p class="author-name">By Saffron boocock mclarnon</p>
+                <p class="review-date">2 weeks ago</p>
+              </div>
+              <p class="car-model">Perodua Axia 1.0 (A)</p>
+            </div>
+          </div>
+
+          <div class="review-slide">
+            <div class="review-car">
+              <img
+                src="/assets/img/vehicles/perodua-bezza.jpg"
+                alt="Perodua Bezza 1.3 (A)"
+              />
+            </div>
+            <div class="review-content">
+              <p class="review-text">
+                " The services from AmriTravel is awesome. My first reservation
+                with a vehicle was guided smoothly and professionally with
+                WhatsApp messaging! 1 hour before reaching the airport I was
+                greeted by their well mannered and professional staff which
+                detailed me the whole car. The car was awesome!!!! I requested
+                for a safe car for my little kids with me, your company took
+                good care of us with a brand new car. Thank you AmriTravel. We
+                are looking forward for more of your services in the near
+                future. "
+              </p>
+              <div class="review-author">
+                <p class="author-name">By Chong Hing Cheeong</p>
+                <p class="review-date">4 weeks ago</p>
+              </div>
+              <p class="car-model">Perodua Bezza 1.3 (A)</p>
+            </div>
+          </div>
+
+          <div class="review-slide">
+            <div class="review-car">
+              <img
+                src="/assets/img/vehicles/perodua-alza.jpg"
+                alt="Perodua Alza New Variant 1.5 (A)"
+              />
+            </div>
+            <div class="review-content">
+              <p class="review-text">" Good car "</p>
+              <div class="review-author">
+                <p class="author-name">By Mohd Fadzli bin Yahaya</p>
+                <p class="review-date">1 month ago</p>
+              </div>
+              <p class="car-model">Perodua Alza New Variant 1.5 (A)</p>
+            </div>
+          </div>
+
+          <div class="review-controls">
+            <button class="review-prev">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="review-next">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+
+          <div class="review-dots">
+            <span class="review-dot active"></span>
+            <span class="review-dot"></span>
+            <span class="review-dot"></span>
+            <span class="review-dot"></span>
+          </div>
+
+          <a href="/reviews" class="see-more-reviews">See more reviews</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Rent Section -->
+    <section class="why-rent">
+      <div class="container">
+        <h2>Why Rent A Car in Malaysia?</h2>
+
+        <div class="reasons">
+          <div class="reason">
+            <img
+              src="/assets/img/icon/icon-freedom-to-explore.svg"
+              alt="Freedom to Explore"
+            />
+            <h3>Freedom to Explore</h3>
+            <p>
+              Easily visit hidden gems and less accessible spots around Malaysia
+              at your own pace. From scenic drives along coastal roads to
+              exploring rural areas.
+            </p>
+          </div>
+
+          <div class="reason">
+            <img
+              src="/assets/img/icon/icon-family-car.svg"
+              alt="Convenient for Family"
+            />
+            <h3>Convenient for Family</h3>
+            <p>
+              Travel stress-free with kids and extra luggage in a spacious,
+              private vehicle. Everyone stays together, safe and comfortable
+              while travelling.
+            </p>
+          </div>
+
+          <div class="reason">
+            <img
+              src="/assets/img/icon/icon-comfortable-travel-car.svg"
+              alt="Comfortable Travel"
+            />
+            <h3>Comfortable Travel</h3>
+            <p>
+              Enjoy private, air-conditioned rides with just your family and
+              group. Our MPVs and SUVs offer enough space for a leisure ride and
+              exploration.
+            </p>
+          </div>
+
+          <div class="reason">
+            <img
+              src="/assets/img/icon/icon-cost-effective-car.svg"
+              alt="Cost-Effective"
+            />
+            <h3>Cost-Effective</h3>
+            <p>
+              Renting a car is cheaper than booking multiple e-hailing trips
+              throughout the day especially for unplanned stops and visits to
+              multiple attractions.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- News & Promotions Section -->
+    <section class="news-promotions">
+      <div class="container">
+        <h2>News & Promotions</h2>
+
+        <div class="news-grid" id="news-grid">
+          <!-- News items will be loaded dynamically via JavaScript -->
+          <div class="news-card">
+            <div class="news-image">
+              <img
+                src="/assets/img/promotions/promo-1.jpg"
+                alt="New Customer Promotion"
+              />
+              <div class="news-date">
+                <span class="day">15</span>
+                <span class="month">JUN</span>
+              </div>
+            </div>
+            <div class="news-content">
+              <h3>New Customer Promotion</h3>
+              <p>
+                Get 10% off your first booking with AmriTravel. Use code
+                NEWCUSTOMER at checkout.
+              </p>
+              <a href="/promotions/new-customer" class="read-more">Read More</a>
+            </div>
+          </div>
+
+          <div class="news-card">
+            <div class="news-image">
+              <img
+                src="/assets/img/promotions/promo-2.jpg"
+                alt="Weekend Special"
+              />
+              <div class="news-date">
+                <span class="day">10</span>
+                <span class="month">JUN</span>
+              </div>
+            </div>
+            <div class="news-content">
+              <h3>Weekend Special</h3>
+              <p>
+                Book a car for the weekend and get an extra day free. Valid for
+                bookings from Friday to Sunday.
+              </p>
+              <a href="/promotions/weekend-special" class="read-more"
+                >Read More</a
+              >
+            </div>
+          </div>
+
+          <div class="news-card">
+            <div class="news-image">
+              <img
+                src="/assets/img/promotions/promo-3.jpg"
+                alt="School Holiday Promotion"
+              />
+              <div class="news-date">
+                <span class="day">5</span>
+                <span class="month">JUN</span>
+              </div>
+            </div>
+            <div class="news-content">
+              <h3>School Holiday Promotion</h3>
+              <p>
+                Planning a family trip during school holidays? Get 15% off on
+                MPVs and SUVs.
+              </p>
+              <a href="/promotions/school-holiday" class="read-more"
+                >Read More</a
+              >
+            </div>
+          </div>
+
+          <div class="news-card">
+            <div class="news-image">
+              <img
+                src="/assets/img/promotions/promo-4.jpg"
+                alt="Long-Term Rental Discount"
+              />
+              <div class="news-date">
+                <span class="day">1</span>
+                <span class="month">JUN</span>
+              </div>
+            </div>
+            <div class="news-content">
+              <h3>Long-Term Rental Discount</h3>
+              <p>
+                Book a car for 7 days or more and get 20% off your total rental
+                price.
+              </p>
+              <a href="/promotions/long-term-rental" class="read-more"
+                >Read More</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="view-all-news">
+          <a href="/promotions" class="view-all-btn">View All Promotions</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+      <div class="container">
+        <h2>FAQ</h2>
+
+        <div class="faq-item">
+          <h3>
+            Is there an airport pickup and drop-off service, and can I pick up
+            and drop off the car at different locations?
+          </h3>
+          <div class="faq-answer">
+            <p>
+              Yes. Our car rental offers
+              <strong
+                >free airport pickup and drop-off services at major
+                airports</strong
+              >. There will be a one-way fee for drop-off locations other than
+              the airport. We also offer flexible pickup and drop-off locations.
+              Additional fees may apply depending on the distance.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <h3>
+            Can I rent a car for a one-way trip outside of the pickup city?
+          </h3>
+          <div class="faq-answer">
+            <p>
+              No, our car rentals are only available for use within the
+              designated area. The rental car must be returned to the designated
+              drop-off location as per the rental agreement.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <h3>What should I do in case of an accident or breakdown?</h3>
+          <div class="faq-answer">
+            <p>
+              Contact our emergency support team immediately. If necessary,
+              inform the local authorities and your insurance provider. We will
+              assist with roadside support and further instructions.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <h3>What happens if I return the car late?</h3>
+          <div class="faq-answer">
+            <p>
+              A grace period of 45 minutes is allowed. After that, additional
+              charges may apply, usually calculated based on hourly or full-day
+              rates.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <h3>Are there any hidden fees or extra charges?</h3>
+          <div class="faq-answer">
+            <p>
+              No, AmriTravel prices are all transparent. However, additional
+              charges may apply for optional add-ons, late returns, extra
+              mileage, or damages not covered by insurance.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-top">
+          <div class="footer-logo">
+            <img src="/assets/img/logo-amritravel.svg" alt="AmriTravel Logo" />
+            <p>
+              AmriTravel is your go-to, reliable car rental service in Malaysia,
+              offering budget-friendly options. Our platform provides seamless
+              access to car rentals, along with convenient bookings for
+              attractions, packages, tours and tickets to renowned spots across
+              the country.
+            </p>
+          </div>
+
+          <div class="footer-links">
+            <div class="footer-column">
+              <h6>Company</h6>
+              <ul>
+                <li><a href="/about-us">About Us</a></li>
+                <li><a href="/blogs">Blogs</a></li>
+                <li><a href="/reviews">Reviews</a></li>
+                <li><a href="/faq">FAQ</a></li>
+                <li><a href="/our-team">Our Team</a></li>
+                <li><a href="/careers">Careers</a></li>
+              </ul>
+            </div>
+
+            <div class="footer-column">
+              <h6>Services</h6>
+              <ul>
+                <li><a href="/">Car Rental</a></li>
+                <li><a href="/attractions">Attractions</a></li>
+              </ul>
+            </div>
+
+            <div class="footer-column">
+              <h6>Legal</h6>
+              <ul>
+                <li>
+                  <a href="/terms-and-conditions">Terms and Conditions</a>
+                </li>
+                <li><a href="/privacy-policy">Privacy Policy</a></li>
+              </ul>
+            </div>
+
+            <div class="footer-column">
+              <h6>Top Attractions</h6>
+              <ul>
+                <li><a href="/attractions/attraction1">Attraction 1</a></li>
+                <li><a href="/attractions/attraction2">Attraction 2</a></li>
+                <li><a href="/attractions/attraction3">Attraction 3</a></li>
+                <li><a href="/attractions/attraction4">Attraction 4</a></li>
+                <li><a href="/attractions/attraction5">Attraction 5</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <div class="address">
+            <h6>Address</h6>
+            <p>123 Main Street, City Name, State, Postal Code, Malaysia</p>
+            <p>AmriTravel Sdn Bhd</p>
+            <p>Company Registration: 123456789-X</p>
+          </div>
+
+          <div class="social-media">
+            <h6>Social Media</h6>
+            <div class="social-icons">
+              <a href="https://www.facebook.com/amritravel" target="_blank"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="https://www.instagram.com/amritravel" target="_blank"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="https://wa.me/60123456789" target="_blank"
+                ><i class="fab fa-whatsapp"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="hotline">
+            <h6>Hotline</h6>
+            <a href="tel:+60123456789">+60123456789</a>
+          </div>
+        </div>
+
+        <div class="copyright">
+          <img src="/assets/img/logo-amritravel.svg" alt="AmriTravel Logo" />
+          <p>&copy; Copyright 2023 - 2025 AmriTravel. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/scripts/redirect.js"></script>
+    <script src="/scripts/track-ads.js"></script>
+    <script src="/scripts/whatsapp-link.js"></script>
+    <script>
+      // Initialize the page
+      document.addEventListener("DOMContentLoaded", function () {
+        // Set default dates (today and tomorrow)
+        const today = new Date();
+        const tomorrow = new Date(today);
+        tomorrow.setDate(tomorrow.getDate() + 1);
+
+        document.getElementById("pickup-date").valueAsDate = today;
+        document.getElementById("return-date").valueAsDate = tomorrow;
+
+        // Initialize welcome popup
+        initWelcomePopup();
+
+        // Initialize location dropdowns
+        initLocationDropdowns();
+
+        // Initialize vehicle tabs
+        initVehicleTabs();
+
+        // Initialize review slider
+        initReviewSlider();
+
+        // Initialize FAQ accordions
+        initFAQ();
+      });
+
+      // Initialize welcome popup
+      function initWelcomePopup() {
+        const welcomePopup = document.getElementById("welcome-popup");
+        const closePopupBtn = document.getElementById("close-popup");
+        const dontShowAgainCheckbox =
+          document.getElementById("dont-show-again");
+
+        // Check if user has chosen not to see the popup again
+        const dontShowAgain = localStorage.getItem("dontShowWelcomePopup");
+
+        if (dontShowAgain !== "true") {
+          // Show popup after a short delay
+          setTimeout(() => {
+            welcomePopup.classList.add("show");
+          }, 2000);
+        }
+
+        // Close popup when close button is clicked
+        closePopupBtn.addEventListener("click", () => {
+          welcomePopup.classList.remove("show");
+
+          // If checkbox is checked, save preference
+          if (dontShowAgainCheckbox.checked) {
+            localStorage.setItem("dontShowWelcomePopup", "true");
+          }
+        });
+      }
+
+      // Initialize location dropdowns
+      function initLocationDropdowns() {
+        const pickupLocationInput = document.getElementById("pickup-location");
+        const returnLocationInput = document.getElementById("return-location");
+        const pickupDropdownBtn = document.getElementById(
+          "pickup-dropdown-btn"
+        );
+        const returnDropdownBtn = document.getElementById(
+          "return-dropdown-btn"
+        );
+        const pickupDropdown = document.getElementById("pickup-dropdown");
+        const returnDropdown = document.getElementById("return-dropdown");
+        const differentLocationCheckbox =
+          document.getElementById("different-location");
+
+        // Toggle pickup dropdown
+        pickupDropdownBtn.addEventListener("click", () => {
+          pickupDropdown.classList.toggle("show");
+          returnDropdown.classList.remove("show");
+        });
+
+        // Toggle return dropdown
+        returnDropdownBtn.addEventListener("click", () => {
+          returnDropdown.classList.toggle("show");
+          pickupDropdown.classList.remove("show");
+        });
+
+        // Handle location selection for pickup
+        const pickupLocationLinks =
+          pickupDropdown.querySelectorAll("a[data-location]");
+        pickupLocationLinks.forEach((link) => {
+          link.addEventListener("click", (e) => {
+            e.preventDefault();
+            const location = link.getAttribute("data-location");
+            pickupLocationInput.value = location;
+            pickupDropdown.classList.remove("show");
+
+            // If "different location" is not checked, set return location to the same
+            if (!differentLocationCheckbox.checked) {
+              returnLocationInput.value = location;
+            }
+          });
+        });
+
+        // Handle location selection for return
+        const returnLocationLinks =
+          returnDropdown.querySelectorAll("a[data-location]");
+        returnLocationLinks.forEach((link) => {
+          link.addEventListener("click", (e) => {
+            e.preventDefault();
+            const location = link.getAttribute("data-location");
+            returnLocationInput.value = location;
+            returnDropdown.classList.remove("show");
+          });
+        });
+
+        // Handle "different location" checkbox
+        differentLocationCheckbox.addEventListener("change", () => {
+          if (!differentLocationCheckbox.checked) {
+            returnLocationInput.value = pickupLocationInput.value;
+          }
+        });
+
+        // Close dropdowns when clicking outside
+        document.addEventListener("click", (e) => {
+          if (
+            !e.target.closest(".location-input") &&
+            !e.target.closest(".location-dropdown")
+          ) {
+            pickupDropdown.classList.remove("show");
+            returnDropdown.classList.remove("show");
+          }
+        });
+      }
+
+      // Initialize vehicle tabs
+      function initVehicleTabs() {
+        const tabButtons = document.querySelectorAll(".vehicle-tabs .tab-btn");
+        const vehicleCards = document.querySelectorAll(".vehicle-card");
+
+        tabButtons.forEach((button) => {
+          button.addEventListener("click", () => {
+            // Remove active class from all buttons
+            tabButtons.forEach((btn) => btn.classList.remove("active"));
+
+            // Add active class to clicked button
+            button.classList.add("active");
+
+            // Get selected category
+            const category = button.getAttribute("data-category");
+
+            // Show/hide vehicle cards based on category
+            vehicleCards.forEach((card) => {
+              if (category === "all" || card.classList.contains(category)) {
+                card.style.display = "block";
+              } else {
+                card.style.display = "none";
+              }
+            });
+          });
+        });
+      }
+
+      // Initialize review slider
+      function initReviewSlider() {
+        const reviewSlides = document.querySelectorAll(".review-slide");
+        const reviewDots = document.querySelectorAll(".review-dot");
+        const prevButton = document.querySelector(".review-prev");
+        const nextButton = document.querySelector(".review-next");
+        let currentSlide = 0;
+
+        // Hide all slides except the first one
+        reviewSlides.forEach((slide, index) => {
+          if (index !== 0) {
+            slide.style.display = "none";
+          }
+        });
+
+        // Show a specific slide
+        function showSlide(index) {
+          // Hide all slides
+          reviewSlides.forEach((slide) => {
+            slide.style.display = "none";
+          });
+
+          // Remove active class from all dots
+          reviewDots.forEach((dot) => {
+            dot.classList.remove("active");
+          });
+
+          // Show the selected slide
+          reviewSlides[index].style.display = "flex";
+
+          // Add active class to the corresponding dot
+          reviewDots[index].classList.add("active");
+
+          // Update current slide index
+          currentSlide = index;
+        }
+
+        // Previous slide
+        prevButton.addEventListener("click", () => {
+          let newIndex = currentSlide - 1;
+          if (newIndex < 0) {
+            newIndex = reviewSlides.length - 1;
+          }
+          showSlide(newIndex);
+        });
+
+        // Next slide
+        nextButton.addEventListener("click", () => {
+          let newIndex = currentSlide + 1;
+          if (newIndex >= reviewSlides.length) {
+            newIndex = 0;
+          }
+          showSlide(newIndex);
+        });
+
+        // Dot navigation
+        reviewDots.forEach((dot, index) => {
+          dot.addEventListener("click", () => {
+            showSlide(index);
+          });
+        });
+
+        // Auto-advance slides every 5 seconds
+        setInterval(() => {
+          let newIndex = currentSlide + 1;
+          if (newIndex >= reviewSlides.length) {
+            newIndex = 0;
+          }
+          showSlide(newIndex);
+        }, 5000);
+      }
+
+      // Initialize FAQ accordions
+      function initFAQ() {
+        const faqItems = document.querySelectorAll(".faq-item h3");
+
+        faqItems.forEach((item) => {
+          item.addEventListener("click", function () {
+            this.parentElement.classList.toggle("active");
+          });
+        });
+      }
+    </script>
+  </body>
+</html>

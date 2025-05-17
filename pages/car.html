@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Details - AmriTravel</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Favicon -->
+    <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
+    <style>
+        /* Additional styles specific to car details page */
+        .car-details-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+        }
+        
+        .car-gallery {
+            position: relative;
+            border-radius: var(--border-radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .car-gallery img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+        
+        .gallery-thumbs {
+            display: flex;
+            gap: var(--spacing-sm);
+            margin-top: var(--spacing-md);
+        }
+        
+        .gallery-thumb {
+            width: 80px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: var(--border-radius-sm);
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity var(--transition-fast);
+        }
+        
+        .gallery-thumb:hover, .gallery-thumb.active {
+            opacity: 1;
+        }
+        
+        .car-info {
+            background-color: var(--bg-light);
+            border-radius: var(--border-radius-md);
+            padding: var(--spacing-lg);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .car-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .car-title h1 {
+            margin-bottom: 0;
+        }
+        
+        .car-rating {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            color: var(--accent-color);
+        }
+        
+        .car-features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-md);
+            margin: var(--spacing-lg) 0;
+        }
+        
+        .feature-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .feature-item img {
+            width: 40px;
+            height: 40px;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .car-description {
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .car-pricing {
+            background-color: var(--bg-gray);
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius-sm);
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .price-row.total {
+            font-weight: 700;
+            font-size: 1.25rem;
+            border-top: 1px solid #ddd;
+            padding-top: var(--spacing-sm);
+            margin-top: var(--spacing-sm);
+        }
+        
+        .booking-dates {
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .date-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .date-col {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .date-col label {
+            font-weight: 500;
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .date-col input, .date-col select {
+            padding: var(--spacing-md);
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius-sm);
+        }
+        
+        .book-now-btn {
+            background-color: var(--primary-color);
+            color: var(--text-dark);
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius-sm);
+            font-weight: 700;
+            text-align: center;
+            width: 100%;
+            transition: background-color var(--transition-fast);
+        }
+        
+        .book-now-btn:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        .car-extras {
+            margin-top: var(--spacing-xl);
+        }
+        
+        .extras-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing-md);
+        }
+        
+        .extra-item {
+            display: flex;
+            align-items: center;
+            padding: var(--spacing-sm);
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius-sm);
+        }
+        
+        .extra-item input {
+            margin-right: var(--spacing-sm);
+        }
+        
+        .extra-item-details {
+            flex-grow: 1;
+        }
+        
+        .extra-item-price {
+            font-weight: 700;
+        }
+        
+        @media (max-width: 992px) {
+            .car-details-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .car-features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .car-features {
+                grid-template-columns: 1fr;
+            }
+            
+            .extras-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .date-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="/">
+                    <img src="/assets/img/logo-amritravel.svg" alt="AmriTravel Logo">
+                </a>
+            </div>
+            <div class="contact-info">
+                <h6>CONTACT</h6>
+                <a href="tel:+60123456789">+60 12-3456789</a>
+                <p>enquiry@amritravel.my</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/" class="active">Car Rental</a></li>
+                    <li><a href="/attractions">Attractions</a></li>
+                    <li><a href="/blogs">Blog</a></li>
+                    <li><a href="/help">Help</a></li>
+                    <li class="language-dropdown">
+                        <a href="#"><i class="fas fa-globe"></i></a>
+                        <ul class="dropdown">
+                            <li>Select Language</li>
+                            <li><a href="/">English</a></li>
+                            <li><a href="/ms">Bahasa Malaysia</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/login">Login</a></li>
+                    <li><a href="/register">Create Account</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Car Details Section -->
+    <section>
+        <div class="container">
+            <div class="car-details-container">
+                <div class="car-gallery">
+                    <img src="/assets/img/vehicles/perodua-bezza-main.jpg" alt="Perodua Bezza" id="main-car-image">
+                    <div class="gallery-thumbs">
+                        <img src="/assets/img/vehicles/perodua-bezza-1.jpg" alt="Perodua Bezza Front" class="gallery-thumb active" onclick="changeImage('/assets/img/vehicles/perodua-bezza-main.jpg')">
+                        <img src="/assets/img/vehicles/perodua-bezza-2.jpg" alt="Perodua Bezza Side" class="gallery-thumb" onclick="changeImage('/assets/img/vehicles/perodua-bezza-2.jpg')">
+                        <img src="/assets/img/vehicles/perodua-bezza-3.jpg" alt="Perodua Bezza Interior" class="gallery-thumb" onclick="changeImage('/assets/img/vehicles/perodua-bezza-3.jpg')">
+                        <img src="/assets/img/vehicles/perodua-bezza-4.jpg" alt="Perodua Bezza Trunk" class="gallery-thumb" onclick="changeImage('/assets/img/vehicles/perodua-bezza-4.jpg')">
+                    </div>
+                </div>
+                
+                <div class="car-info">
+                    <div class="car-title">
+                        <h1>Perodua Bezza 1.3 (A)</h1>
+                        <div class="car-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span>(4.5/5)</span>
+                        </div>
+                    </div>
+                    
+                    <div class="car-features">
+                        <div class="feature-item">
+                            <img src="/assets/img/icon/icon-passengers.svg" alt="Passengers">
+                            <h4>5 Passengers</h4>
+                        </div>
+                        <div class="feature-item">
+                            <img src="/assets/img/icon/icon-baggage.svg" alt="Baggage">
+                            <h4>2 Bags</h4>
+                        </div>
+                        <div class="feature-item">
+                            <img src="/assets/img/icon/icon-door.svg" alt="Doors">
+                            <h4>4 Doors</h4>
+                        </div>
+                        <div class="feature-item">
+                            <img src="/assets/img/icon/icon-aircond.svg" alt="Air Conditioning">
+                            <h4>Air Conditioning</h4>
+                        </div>
+                        <div class="feature-item">
+                            <img src="/assets/img/icon/icon-transmission.svg" alt="Transmission">
+                            <h4>Automatic</h4>
+                        </div>
+                        <div class="feature-item">
+                            <img src="/assets/img/icon/icon-oil.svg" alt="Fuel">
+                            <h4>Petrol</h4>
+                        </div>
+                    </div>
+                    
+                    <div class="car-description">
+                        <h3>About This Car</h3>
+                        <p>The Perodua Bezza is a compact sedan that offers excellent fuel efficiency and comfortable seating for 5 passengers. With its spacious trunk and reliable performance, it's perfect for exploring Malaysia at your own pace.</p>
+                        <p>This vehicle comes with comprehensive insurance coverage and 24/7 roadside assistance for your peace of mind.</p>
+                    </div>
+                    
+                    <div class="car-pricing">
+                        <h3>Pricing</h3>
+                        <div class="price-row">
+                            <span>Daily Rate:</span>
+                            <span>RM 158.00</span>
+                        </div>
+                        <div class="price-row">
+                            <span>Insurance:</span>
+                            <span>RM 15.00/day</span>
+                        </div>
+                        <div class="price-row">
+                            <span>Discount:</span>
+                            <span>-RM 20.00</span>
+                        </div>
+                        <div class="price-row total">
+                            <span>Total:</span>
+                            <span>RM 153.00/day</span>
+                        </div>
+                    </div>
+                    
+                    <div class="booking-dates">
+                        <h3>Select Dates</h3>
+                        <div class="date-row">
+                            <div class="date-col">
+                                <label for="pickup-date">Pickup Date</label>
+                                <input type="date" id="pickup-date">
+                                <select id="pickup-time">
+                                    <option value="08:00">8:00 AM</option>
+                                    <option value="09:00">9:00 AM</option>
+                                    <option value="10:00">10:00 AM</option>
+                                    <option value="11:00">11:00 AM</option>
+                                    <option value="12:00">12:00 PM</option>
+                                    <option value="13:00">1:00 PM</option>
+                                    <option value="14:00">2:00 PM</option>
+                                    <option value="15:00">3:00 PM</option>
+                                    <option value="16:00">4:00 PM</option>
+                                    <option value="17:00">5:00 PM</option>
+                                </select>
+                            </div>
+                            <div class="date-col">
+                                <label for="return-date">Return Date</label>
+                                <input type="date" id="return-date">
+                                <select id="return-time">
+                                    <option value="08:00">8:00 AM</option>
+                                    <option value="09:00">9:00 AM</option>
+                                    <option value="10:00">10:00 AM</option>
+                                    <option value="11:00">11:00 AM</option>
+                                    <option value="12:00">12:00 PM</option>
+                                    <option value="13:00">1:00 PM</option>
+                                    <option value="14:00">2:00 PM</option>
+                                    <option value="15:00">3:00 PM</option>
+                                    <option value="16:00">4:00 PM</option>
+                                    <option value="17:00">5:00 PM</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="/booking" class="book-now-btn">Book Now</a>
+                </div>
+            </div>
+            
+            <div class="car-extras">
+                <h2>Optional Extras</h2>
+                <div class="extras-grid">
+                    <label class="extra-item">
+                        <input type="checkbox" name="extra-gps">
+                        <div class="extra-item-details">
+                            <h4>GPS Navigation</h4>
+                            <p>Never get lost with our GPS navigation system</p>
+                        </div>
+                        <div class="extra-item-price">RM 15/day</div>
+                    </label>
+                    
+                    <label class="extra-item">
+                        <input type="checkbox" name="extra-child-seat">
+                        <div class="extra-item-details">
+                            <h4>Child Seat</h4>
+                            <p>Safety first for your little ones</p>
+                        </div>
+                        <div class="extra-item-price">RM 20/day</div>
+                    </label>
+                    
+                    <label class="extra-item">
+                        <input type="checkbox" name="extra-additional-driver">
+                        <div class="extra-item-details">
+                            <h4>Additional Driver</h4>
+                            <p>Add another driver to share the driving</p>
+                        </div>
+                        <div class="extra-item-price">RM 30/rental</div>
+                    </label>
+                    
+                    <label class="extra-item">
+                        <input type="checkbox" name="extra-wifi">
+                        <div class="extra-item-details">
+                            <h4>Portable WiFi</h4>
+                            <p>Stay connected wherever you go</p>
+                        </div>
+                        <div class="extra-item-price">RM 25/day</div>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-logo">
+                    <img src="/assets/img/logo-amritravel.svg" alt="AmriTravel Logo">
+                    <p>AmriTravel is your go-to, reliable car rental service in Malaysia, offering budget-friendly options. Our platform provides seamless access to car rentals, along with convenient bookings for attractions, packages, tours and tickets to renowned spots across the country.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h6>Company</h6>
+                        <ul>
+                            <li><a href="/about-us">About Us</a></li>
+                            <li><a href="/blogs">Blogs</a></li>
+                            <li><a href="/reviews">Reviews</a></li>
+                            <li><a href="/faq">FAQ</a></li>
+                            <li><a href="/our-team">Our Team</a></li>
+                            <li><a href="/careers">Careers</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h6>Services</h6>
+                        <ul>
+                            <li><a href="/">Car Rental</a></li>
+                            <li><a href="/attractions">Attractions</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h6>Legal</h6>
+                        <ul>
+                            <li><a href="/terms-and-conditions">Terms and Conditions</a></li>
+                            <li><a href="/privacy-policy">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h6>Top Attractions</h6>
+                        <ul>
+                            <li><a href="/attractions/attraction1">Attraction 1</a></li>
+                            <li><a href="/attractions/attraction2">Attraction 2</a></li>
+                            <li><a href="/attractions/attraction3">Attraction 3</a></li>
+                            <li><a href="/attractions/attraction4">Attraction 4</a></li>
+                            <li><a href="/attractions/attraction5">Attraction 5</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="address">
+                    <h6>Address</h6>
+                    <p>123 Main Street, City Name, State, Postal Code, Malaysia</p>
+                    <p>AmriTravel Sdn Bhd</p>
+                    <p>Company Registration: 123456789-X</p>
+                </div>
+                
+                <div class="social-media">
+                    <h6>Social Media</h6>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/amritravel" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/amritravel" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/60123456789" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="hotline">
+                    <h6>Hotline</h6>
+                    <a href="tel:+60123456789">+60123456789</a>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <img src="/assets/img/logo-amritravel.svg" alt="AmriTravel Logo">
+                <p>&copy; Copyright 2023 - 2025 AmriTravel. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/scripts/redirect.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set default dates (today and tomorrow)
+            const today = new Date();
+            const tomorrow = new Date(today);
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            
+            document.getElementById('pickup-date').valueAsDate = today;
+            document.getElementById('return-date').valueAsDate = tomorrow;
+            
+            // Calculate and update price based on dates
+            updatePrice();
+            
+            // Add event listeners for date changes
+            document.getElementById('pickup-date').addEventListener('change', updatePrice);
+            document.getElementById('return-date').addEventListener('change', updatePrice);
+        });
+        
+        function changeImage(src) {
+            document.getElementById('main-car-image').src = src;
+            
+            // Update active thumbnail
+            const thumbs = document.querySelectorAll('.gallery-thumb');
+            thumbs.forEach(thumb => {
+                thumb.classList.remove('active');
+                if (thumb.getAttribute('onclick').includes(src)) {
+                    thumb.classList.add('active');
+                }
+            });
+        }
+        
+        function updatePrice() {
+            // This would normally calculate the price based on selected dates
+            // For now, we'll just use a placeholder
+            console.log('Price updated');
+        }
+    </script>
+</body>
+</html>

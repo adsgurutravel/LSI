@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AmriTravel AI Assistant Dashboard</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Favicon -->
+    <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
+    <style>
+        /* Dashboard specific styles */
+        .dashboard-container {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            min-height: 100vh;
+        }
+        
+        .sidebar {
+            background-color: var(--secondary-dark);
+            color: var(--text-light);
+            padding: var(--spacing-lg);
+        }
+        
+        .sidebar-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: var(--spacing-xl);
+        }
+        
+        .sidebar-header img {
+            height: 40px;
+            margin-right: var(--spacing-md);
+        }
+        
+        .sidebar-header h2 {
+            font-size: 1.25rem;
+            margin-bottom: 0;
+        }
+        
+        .sidebar-menu {
+            margin-bottom: var(--spacing-xl);
+        }
+        
+        .sidebar-menu h3 {
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .sidebar-menu ul li {
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .sidebar-menu ul li a {
+            display: flex;
+            align-items: center;
+            color: var(--text-light);
+            padding: var(--spacing-sm) 0;
+            transition: color var(--transition-fast);
+        }
+        
+        .sidebar-menu ul li a:hover,
+        .sidebar-menu ul li a.active {
+            color: var(--primary-color);
+        }
+        
+        .sidebar-menu ul li a i {
+            width: 20px;
+            margin-right: var(--spacing-md);
+        }
+        
+        .main-content {
+            background-color: var(--bg-gray);
+            padding: var(--spacing-lg);
+        }
+        
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .dashboard-header h1 {
+            margin-bottom: 0;
+        }
+        
+        .dashboard-header .actions {
+            display: flex;
+            gap: var(--spacing-md);
+        }
+        
+        .dashboard-card {
+            background-color: var(--bg-light);
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--shadow-sm);
+            padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .dashboard-card h2 {
+            margin-bottom: var(--spacing-md);
+            display: flex;
+            align-items: center;
+        }
+        
+        .dashboard-card h2 i {
+            margin-right: var(--spacing-sm);
+            color: var(--primary-color);
+        }
+        
+        .chat-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr auto;
+            height: 500px;
+            gap: var(--spacing-md);
+        }
+        
+        .chat-messages {
+            background-color: var(--bg-light);
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius-md);
+            padding: var(--spacing-md);
+            overflow-y: auto;
+        }
+        
+        .message {
+            margin-bottom: var(--spacing-md);
+            display: flex;
+        }
+        
+        .message.user {
+            justify-content: flex-end;
+        }
+        
+        .message-content {
+            max-width: 80%;
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius-md);
+        }
+        
+        .message.user .message-content {
+            background-color: var(--primary-color);
+        }
+        
+        .message.assistant .message-content {
+            background-color: var(--bg-gray);
+        }
+        
+        .chat-input {
+            display: flex;
+            gap: var(--spacing-md);
+        }
+        
+        .chat-input input {
+            flex: 1;
+            padding: var(--spacing-md);
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius-md);
+        }
+        
+        .chat-input button {
+            background-color: var(--primary-color);
+            color: var(--text-dark);
+            padding: var(--spacing-md) var(--spacing-lg);
+            border-radius: var(--border-radius-md);
+            font-weight: 700;
+        }
+        
+        .logs-container {
+            height: 400px;
+            overflow-y: auto;
+        }
+        
+        .log-entry {
+            padding: var(--spacing-sm) 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .log-timestamp {
+            min-width: 180px;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+        
+        .log-message {
+            flex: 1;
+        }
+        
+        .log-type {
+            padding: 2px 6px;
+            border-radius: var(--border-radius-sm);
+            font-size: 0.75rem;
+            margin-right: var(--spacing-sm);
+        }
+        
+        .log-type.system {
+            background-color: var(--info);
+            color: var(--text-light);
+        }
+        
+        .log-type.tasks {
+            background-color: var(--primary-color);
+            color: var(--text-dark);
+        }
+        
+        .log-type.errors {
+            background-color: var(--danger);
+            color: var(--text-light);
+        }
+        
+        .tasks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+        }
+        
+        .task-card {
+            background-color: var(--bg-light);
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--shadow-sm);
+            padding: var(--spacing-lg);
+            transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+        }
+        
+        .task-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .task-card h3 {
+            margin-bottom: var(--spacing-sm);
+            display: flex;
+            align-items: center;
+        }
+        
+        .task-card h3 i {
+            margin-right: var(--spacing-sm);
+            color: var(--primary-color);
+        }
+        
+        .task-card p {
+            color: var(--text-muted);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .task-card .schedule {
+            font-size: 0.875rem;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .task-card .actions {
+            display: flex;
+            justify-content: flex-end;
+        }
+        
+        .task-card .actions button {
+            background-color: var(--primary-color);
+            color: var(--text-dark);
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: var(--border-radius-sm);
+            font-weight: 500;
+        }
+        
+        .tab-container {
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .tab-buttons {
+            display: flex;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .tab-button {
+            padding: var(--spacing-sm) var(--spacing-lg);
+            background-color: var(--bg-light);
+            border-radius: var(--border-radius-sm);
+            font-weight: 500;
+        }
+        
+        .tab-button.active {
+            background-color: var(--primary-color);
+            color: var(--text-dark);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <img src="/assets/img/logo-amritravel.svg" alt="AmriTravel Logo">
+                <h2>AI Assistant</h2>
+            </div>
+            
+            <div class="sidebar-menu">
+                <h3>Dashboard</h3>
+                <ul>
+                    <li><a href="#" class="active" data-tab="overview"><i class="fas fa-home"></i> Overview</a></li>
+                    <li><a href="#" data-tab="chat"><i class="fas fa-comments"></i> Chat</a></li>
+                    <li><a href="#" data-tab="tasks"><i class="fas fa-tasks"></i> Tasks</a></li>
+                    <li><a href="#" data-tab="logs"><i class="fas fa-list"></i> Logs</a></li>
+                    <li><a href="#" data-tab="settings"><i class="fas fa-cog"></i> Settings</a></li>
+                </ul>
+            </div>
+            
+            <div class="sidebar-menu">
+                <h3>System</h3>
+                <ul>
+                    <li><a href="/"><i class="fas fa-arrow-left"></i> Back to Website</a></li>
+                    <li><a href="/logout"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="dashboard-header">
+                <h1>AI Assistant Dashboard</h1>
+                <div class="actions">
+                    <button class="refresh-btn"><i class="fas fa-sync-alt"></i> Refresh</button>
+                </div>
+            </div>
+            
+            <!-- Overview Tab -->
+            <div class="tab-content active" id="overview">
+                <div class="dashboard-card">
+                    <h2><i class="fas fa-info-circle"></i> System Status</h2>
+                    <div class="system-status">
+                        <p><strong>Version:</strong> <span id="system-version">1.0.0</span></p>
+                        <p><strong>Status:</strong> <span id="system-status">Online</span></p>
+                        <p><strong>Last Update:</strong> <span id="system-last-update">2023-06-15 07:59:00</span></p>
+                    </div>
+                </div>
+                
+                <div class="dashboard-card">
+                    <h2><i class="fas fa-chart-line"></i> Quick Stats</h2>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <h3>Active Tasks</h3>
+                            <p class="stat-value" id="active-tasks">6</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Completed Tasks</h3>
+                            <p class="stat-value" id="completed-tasks">24</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Error Rate</h3>
+                            <p class="stat-value" id="error-rate">2.5%</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Chat Sessions</h3>
+                            <p class="stat-value" id="chat-sessions">12</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dashboard-card">
+                    <h2><i class="fas fa-exclamation-triangle"></i> Recent Errors</h2>
+                    <div class="logs-container" id="recent-errors">
+                        <!-- Error logs will be loaded here -->
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Chat Tab -->
+            <div class="tab-content" id="chat">
+                <div class="dashboard-card">
+                    <h2><i class="fas fa-comments"></i> AI Chat</h2>
+                    <div class="chat-container">
+                        <div class="chat-messages" id="chat-messages">
+                            <!-- Chat messages will be loaded here -->
+                        </div>
+                        <div class="chat-input">
+                            <input type="text" id="chat-input-field" placeholder="Type your message here...">
+                            <button id="chat-send-btn"><i class="fas fa-paper-plane"></i> Send</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tasks Tab -->
+            <div class="tab-content" id="tasks">
+                <div class="dashboard-card">
+                    <h2><i class="fas fa-tasks"></i> Scheduled Tasks</h2>
+                    <div class="tasks-grid" id="scheduled-tasks">
+                        <!-- Task cards will be loaded here -->
+                    </div>
+                </div>
+                
+                <div class="dashboard-card">
+                    <h2><i class="fas fa-play"></i> Run Task</h2>
+                    <div class="run-task-form">
+                        <div class="form-group">
+                            <label for="task-select">Select Task</label>
+                            <select id="task-select">
+                                <option value="">-- Select a task --</option>
+                                <option value="syncBookings">Sync Bookings</option>
+                                <option value="syncVehicles">Sync Vehicles</option>
+                                <option value="generateReports">Generate Reports</option>
+                                <option value="sendReminders">Send Reminders</option>
+                                <option value="checkAvailability">Check Availability</option>
+                                <option value="updatePricing">Update Pricing</option>
+                            </select>
+                        </div>
+                        <button id="run-task-btn">Run Task</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Logs Tab -->
+            <div class="tab-content" id="logs">
+                <div class="dashboard-card">
+                    <h2><i class="fas fa-list"></i> System Logs</h2>
+                    <div class="tab-container">
+                        <div class="tab-buttons">
+                            <button class="tab-button active" data-log-type="all">All Logs</button>
+                            <button class="tab-button" data-log-type="system">System</button>
+                            <button class="tab-button" data-log-type="tasks">Tasks</button>
+                            <button class="tab-button" data-log-type="errors">Errors</button>
+                        </div>
+                        <div class="logs-container" id="logs-container">
+                            <!-- Logs will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Settings Tab -->
+            <div class="tab-content" id="settings">
+                <div class="dashboard-card">
+                    <h2><i class="fas fa-cog"></i> System Settings</h2>
+                    <div class="settings-form">
+                        <div class="form-group">
+                            <label for="ai-model">AI Model</label>
+                            <select id="ai-model">
+                                <option value="gpt-4">GPT-4</option>
+                                <option value="gpt-3.5-turbo">GPT-3.5 Turbo</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="max-tokens">Max Tokens</label>
+                            <input type="number" id="max-tokens" value="2000">
+                        </div>
+                        <div class="form-group">
+                            <label for="temperature">Temperature</label>
+                            <input type="range" id="temperature" min="0" max="1" step="0.1" value="0.7">
+                            <span id="temperature-value">0.7</span>
+                        </div>
+                        <button id="save-settings-btn">Save Settings</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="/ai-assistant/dashboard.js"></script>
+</body>
+</html>

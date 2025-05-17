@@ -1,0 +1,112 @@
+{
+  "tasks": [
+    {
+      "timestamp": "2023-06-15T08:00:00.000Z",
+      "message": "Starting scheduled task: syncBookings"
+    },
+    {
+      "timestamp": "2023-06-15T08:01:30.000Z",
+      "message": "Completed scheduled task: syncBookings"
+    },
+    {
+      "timestamp": "2023-06-15T08:02:00.000Z",
+      "message": "Starting scheduled task: syncVehicles"
+    },
+    {
+      "timestamp": "2023-06-15T08:03:15.000Z",
+      "message": "Completed scheduled task: syncVehicles"
+    },
+    {
+      "timestamp": "2023-06-15T09:00:00.000Z",
+      "message": "Starting scheduled task: sendReminders"
+    },
+    {
+      "timestamp": "2023-06-15T09:02:45.000Z",
+      "message": "Completed scheduled task: sendReminders"
+    },
+    {
+      "timestamp": "2023-06-15T12:00:00.000Z",
+      "message": "Starting scheduled task: checkAvailability"
+    },
+    {
+      "timestamp": "2023-06-15T12:01:10.000Z",
+      "message": "Completed scheduled task: checkAvailability"
+    },
+    {
+      "timestamp": "2023-06-16T00:00:00.000Z",
+      "message": "Starting scheduled task: updatePricing"
+    },
+    {
+      "timestamp": "2023-06-16T00:02:30.000Z",
+      "message": "Completed scheduled task: updatePricing"
+    }
+  ],
+  "errors": [
+    {
+      "timestamp": "2023-06-15T08:01:15.000Z",
+      "message": "Error syncing booking AT-12345678: API request failed with status 429"
+    },
+    {
+      "timestamp": "2023-06-15T09:01:30.000Z",
+      "message": "Error sending reminder for booking AT-23456789: Invalid phone number format"
+    }
+  ],
+  "system": [
+    {
+      "timestamp": "2023-06-15T07:59:00.000Z",
+      "message": "AI Assistant started"
+    },
+    {
+      "timestamp": "2023-06-15T07:59:05.000Z",
+      "message": "Tasks loaded and scheduled successfully"
+    },
+    {
+      "timestamp": "2023-06-15T07:59:10.000Z",
+      "message": "Task registered: syncBookings"
+    },
+    {
+      "timestamp": "2023-06-15T07:59:11.000Z",
+      "message": "Task registered: syncVehicles"
+    },
+    {
+      "timestamp": "2023-06-15T07:59:12.000Z",
+      "message": "Task registered: generateReports"
+    },
+    {
+      "timestamp": "2023-06-15T07:59:13.000Z",
+      "message": "Task registered: sendReminders"
+    },
+    {
+      "timestamp": "2023-06-15T07:59:14.000Z",
+      "message": "Task registered: checkAvailability"
+    },
+    {
+      "timestamp": "2023-06-15T07:59:15.000Z",
+      "message": "Task registered: updatePricing"
+    },
+    {
+      "timestamp": "2023-06-15T07:59:20.000Z",
+      "message": "Task scheduled: syncBookings with schedule 0 */2 * * *"
+    },
+    {
+      "timestamp": "2023-06-15T07:59:21.000Z",
+      "message": "Task scheduled: syncVehicles with schedule 0 */4 * * *"
+    },
+    {
+      "timestamp": "2023-06-15T07:59:22.000Z",
+      "message": "Task scheduled: generateReports with schedule 0 8 * * 1"
+    },
+    {
+      "timestamp": "2023-06-15T07:59:23.000Z",
+      "message": "Task scheduled: sendReminders with schedule 0 9 * * *"
+    },
+    {
+      "timestamp": "2023-06-15T07:59:24.000Z",
+      "message": "Task scheduled: checkAvailability with schedule 0 */6 * * *"
+    },
+    {
+      "timestamp": "2023-06-15T07:59:25.000Z",
+      "message": "Task scheduled: updatePricing with schedule 0 0 * * *"
+    }
+  ]
+}

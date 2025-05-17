@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Your Booking - AmriTravel</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Favicon -->
+    <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
+    <style>
+        /* Additional styles specific to booking page */
+        .booking-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: var(--spacing-xl);
+        }
+        
+        .booking-form {
+            background-color: var(--bg-light);
+            border-radius: var(--border-radius-md);
+            padding: var(--spacing-lg);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .booking-summary {
+            background-color: var(--bg-light);
+            border-radius: var(--border-radius-md);
+            padding: var(--spacing-lg);
+            box-shadow: var(--shadow-md);
+            position: sticky;
+            top: 100px;
+        }
+        
+        .form-section {
+            margin-bottom: var(--spacing-lg);
+            border-bottom: 1px solid var(--bg-gray);
+            padding-bottom: var(--spacing-lg);
+        }
+        
+        .form-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .form-col {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-col label {
+            font-weight: 500;
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .form-col input, .form-col select, .form-col textarea {
+            padding: var(--spacing-md);
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius-sm);
+        }
+        
+        .form-col textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        .form-col.full {
+            grid-column: 1 / -1;
+        }
+        
+        .vehicle-summary {
+            display: flex;
+            align-items: center;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .vehicle-summary img {
+            width: 100px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: var(--border-radius-sm);
+            margin-right: var(--spacing-md);
+        }
+        
+        .vehicle-summary-details h4 {
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .vehicle-summary-details p {
+            margin-bottom: 0;
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+        
+        .booking-details {
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .booking-details-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .booking-details-row.total {
+            font-weight: 700;
+            font-size: 1.125rem;
+            border-top: 1px solid var(--bg-gray);
+            padding-top: var(--spacing-sm);
+            margin-top: var(--spacing-sm);
+        }
+        
+        .payment-methods {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .payment-method {
+            display: flex;
+            align-items: center;
+            padding: var(--spacing-sm);
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius-sm);
+            cursor: pointer;
+        }
+        
+        .payment-method.active {
+            border-color: var(--primary-color);
+            background-color: var(--primary-light);
+        }
+        
+        .payment-method input {
+            margin-right: var(--spacing-sm);
+        }
+        
+        .confirm-btn {
+            background-color: var(--primary-color);
+            color: var(--text-dark);
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius-sm);
+            font-weight: 700;
+            text-align: center;
+            width: 100%;
+            transition: background-color var(--transition-fast);
+        }
+        
+        .confirm-btn:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        @media (max-width: 992px) {
+            .booking-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .booking-summary {
+                position: static;
+                order: -1;
+                margin-bottom: var(--spacing-lg);
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="/">
+                    <img src="/assets/img/logo-amritravel.svg" alt="AmriTravel Logo">
+                </a>
+            </div>
+            <div class="contact-info">
+                <h6>CONTACT</h6>
+                <a href="tel:+60123456789">+60 12-3456789</a>
+                <p>enquiry@amritravel.my</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/" class="active">Car Rental</a></li>
+                    <li><a href="/attractions">Attractions</a></li>
+                    <li><a href="/blogs">Blog</a></li>
+                    <li><a href="/help">Help</a></li>
+                    <li class="language-dropdown">
+                        <a href="#"><i class="fas fa-globe"></i></a>
+                        <ul class="dropdown">
+                            <li>Select Language</li>
+                            <li><a href="/">English</a></li>
+                            <li><a href="/ms">Bahasa Malaysia</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/login">Login</a></li>
+                    <li><a href="/register">Create Account</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Booking Section -->
+    <section>
+        <div class="container">
+            <h1>Complete Your Booking</h1>
+            <p>Please fill in the details below to complete your booking.</p>
+            
+            <div class="booking-container">
+                <div class="booking-form">
+                    <form id="booking-form">
+                        <div class="form-section">
+                            <h3>Personal Information</h3>
+                            <div class="form-row">
+                                <div class="form-col">
+                                    <label for="first-name">First Name *</label>
+                                    <input type="text" id="first-name" name="first-name" required>
+                                </div>
+                                <div class="form-col">
+                                    <label for="last-name">Last Name *</label>
+                                    <input type="text" id="last-name" name="last-name" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-col">
+                                    <label for="email">Email Address *</label>
+                                    <input type="email" id="email" name="email" required>
+                                </div>
+                                <div class="form-col">
+                                    <label for="phone">Phone Number *</label>
+                                    <input type="tel" id="phone" name="phone" required>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-section">
+                            <h3>Driver Information</h3>
+                            <div class="form-row">
+                                <div class="form-col">
+                                    <label for="license-number">Driver's License Number *</label>
+                                    <input type="text" id="license-number" name="license-number" required>
+                                </div>
+                                <div class="form-col">
+                                    <label for="license-country">License Issuing Country *</label>
+                                    <select id="license-country" name="license-country" required>
+                                        <option value="">Select Country</option>
+                                        <option value="MY">Malaysia</option>
+                                        <option value="SG">Singapore</option>
+                                        <option value="TH">Thailand</option>
+                                        <option value="ID">Indonesia</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-col">
+                                    <label for="license-expiry">License Expiry Date *</label>
+                                    <input type="date" id="license-expiry" name="license-expiry" required>
+                                </div>
+                                <div class="form-col">
+                                    <label for="age">Driver's Age *</label>
+                                    <select id="age" name="age" required>
+                                        <option value="">Select Age</option>
+                                        <option value="18-21">18-21 years</option>
+                                        <option value="22-25">22-25 years</option>
+                                        <option value="26-65">26-65 years</option>
+                                        <option value="66+">66+ years</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-section">
+                            <h3>Flight Information (Optional)</h3>
+                            <div class="form-row">
+                                <div class="form-col">
+                                    <label for="flight-number">Flight Number</label>
+                                    <input type="text" id="flight-number" name="flight-number">
+                                </div>
+                                <div class="form-col">
+                                    <label for="flight-time">Flight Arrival Time</label>
+                                    <input type="time" id="flight-time" name="flight-time">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-section">
+                            <h3>Special Requests</h3>
+                            <div class="form-row">
+                                <div class="form-col full">
+                                    <label for="special-requests">Any special requests or requirements?</label>
+                                    <textarea id="special-requests" name="special-requests"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="booking-summary">
+                    <h3>Booking Summary</h3>
+                    
+                    <div class="vehicle-summary">
+                        <img src="/assets/img/vehicles/perodua-bezza.jpg" alt="Perodua Bezza">
+                        <div class="vehicle-summary-details">
+                            <h4>Perodua Bezza 1.3 (A)</h4>
+                            <p>Sedan • 5 Passengers • Automatic</p>
+                        </div>
+                    </div>
+                    
+                    <div class="booking-details">
+                        <div class="booking-details-row">
+                            <span>Pickup Date:</span>
+                            <span id="summary-pickup-date">Jun 15, 2023, 10:00 AM</span>
+                        </div>
+                        <div class="booking-details-row">
+                            <span>Return Date:</span>
+                            <span id="summary-return-date">Jun 18, 2023, 10:00 AM</span>
+                        </div>
+                        <div class="booking-details-row">
+                            <span>Pickup Location:</span>
+                            <span id="summary-pickup-location">Airport</span>
+                        </div>
+                        <div class="booking-details-row">
+                            <span>Return Location:</span>
+                            <span id="summary-return-location">Airport</span>
+                        </div>
+                        <div class="booking-details-row">
+                            <span>Duration:</span>
+                            <span id="summary-duration">3 days</span>
+                        </div>
+                    </div>
+                    
+                    <div class="booking-details">
+                        <div class="booking-details-row">
+                            <span>Base Rate (3 days):</span>
+                            <span>RM 474.00</span>
+                        </div>
+                        <div class="booking-details-row">
+                            <span>Insurance:</span>
+                            <span>RM 45.00</span>
+                        </div>
+                        <div class="booking-details-row">
+                            <span>Discount:</span>
+                            <span>-RM 60.00</span>
+                        </div>
+                        <div class="booking-details-row total">
+                            <span>Total:</span>
+                            <span>RM 459.00</span>
+                        </div>
+                    </div>
+                    
+                    <div class="payment-methods">
+                        <h4>Payment Method</h4>
+                        <label class="payment-method active">
+                            <input type="radio" name="payment-method" value="bayarcash" checked>
+                            <span>BayarCash</span>
+                        </label>
+                        <label class="payment-method">
+                            <input type="radio" name="payment-method" value="credit-card">
+                            <span>Credit/Debit Card</span>
+                        </label>
+                        <label class="payment-method">
+                            <input type="radio" name="payment-method" value="online-banking">
+                            <span>Online Banking</span>
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="confirm-btn" form="booking-form">Confirm Booking</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-logo">
+                    <img src="/assets/img/logo-amritravel.svg" alt="AmriTravel Logo">
+                    <p>AmriTravel is your go-to, reliable car rental service in Malaysia, offering budget-friendly options. Our platform provides seamless access to car rentals, along with convenient bookings for attractions, packages, tours and tickets to renowned spots across the country.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h6>Company</h6>
+                        <ul>
+                            <li><a href="/about-us">About Us</a></li>
+                            <li><a href="/blogs">Blogs</a></li>
+                            <li><a href="/reviews">Reviews</a></li>
+                            <li><a href="/faq">FAQ</a></li>
+                            <li><a href="/our-team">Our Team</a></li>
+                            <li><a href="/careers">Careers</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h6>Services</h6>
+                        <ul>
+                            <li><a href="/">Car Rental</a></li>
+                            <li><a href="/attractions">Attractions</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h6>Legal</h6>
+                        <ul>
+                            <li><a href="/terms-and-conditions">Terms and Conditions</a></li>
+                            <li><a href="/privacy-policy">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h6>Top Attractions</h6>
+                        <ul>
+                            <li><a href="/attractions/attraction1">Attraction 1</a></li>
+                            <li><a href="/attractions/attraction2">Attraction 2</a></li>
+                            <li><a href="/attractions/attraction3">Attraction 3</a></li>
+                            <li><a href="/attractions/attraction4">Attraction 4</a></li>
+                            <li><a href="/attractions/attraction5">Attraction 5</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="address">
+                    <h6>Address</h6>
+                    <p>123 Main Street, City Name, State, Postal Code, Malaysia</p>
+                    <p>AmriTravel Sdn Bhd</p>
+                    <p>Company Registration: 123456789-X</p>
+                </div>
+                
+                <div class="social-media">
+                    <h6>Social Media</h6>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/amritravel" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/amritravel" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/60123456789" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="hotline">
+                    <h6>Hotline</h6>
+                    <a href="tel:+60123456789">+60123456789</a>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <img src="/assets/img/logo-amritravel.svg" alt="AmriTravel Logo">
+                <p>&copy; Copyright 2023 - 2025 AmriTravel. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/scripts/redirect.js"></script>
+    <script src="/scripts/supabase-save.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get form and submit button
+            const bookingForm = document.getElementById('booking-form');
+            const confirmBtn = document.querySelector('.confirm-btn');
+            
+            // Handle form submission
+            confirmBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Validate form
+                if (bookingForm.checkValidity()) {
+                    // Get form data
+                    const formData = new FormData(bookingForm);
+                    const bookingData = {};
+                    
+                    for (const [key, value] of formData.entries()) {
+                        bookingData[key] = value;
+                    }
+                    
+                    // Add booking details
+                    bookingData.vehicleId = getUrlParam('vehicleId') || '1';
+                    bookingData.pickupDate = document.getElementById('summary-pickup-date').textContent;
+                    bookingData.returnDate = document.getElementById('summary-return-date').textContent;
+                    bookingData.pickupLocation = document.getElementById('summary-pickup-location').textContent;
+                    bookingData.returnLocation = document.getElementById('summary-return-location').textContent;
+                    bookingData.totalAmount = '459.00';
+                    bookingData.paymentMethod = document.querySelector('input[name="payment-method"]:checked').value;
+                    
+                    // Save booking data
+                    saveBookingData(bookingData);
+                } else {
+                    // Trigger form validation
+                    bookingForm.reportValidity();
+                }
+            });
+            
+            // Payment method selection
+            const paymentMethods = document.querySelectorAll('.payment-method');
+            
+            paymentMethods.forEach(method => {
+                method.addEventListener('click', function() {
+                    // Remove active class from all methods
+                    paymentMethods.forEach(m => m.classList.remove('active'));
+                    
+                    // Add active class to clicked method
+                    this.classList.add('active');
+                    
+                    // Check the radio button
+                    const radio = this.querySelector('input[type="radio"]');
+                    radio.checked = true;
+                });
+            });
+            
+            // Helper function to get URL parameters
+            function getUrlParam(param) {
+                const urlParams = new URLSearchParams(window.location.search);
+                return urlParams.get(param);
+            }
+            
+            // Save booking data to Supabase
+            function saveBookingData(data) {
+                // This would normally call the Supabase save function
+                console.log('Saving booking data:', data);
+                
+                // For demo purposes, redirect to thank you page
+                window.location.href = '/thankyou?booking=success';
+            }
+        });
+    </script>
+</body>
+</html>

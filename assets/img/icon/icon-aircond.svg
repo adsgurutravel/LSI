@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Air Conditioning Icon</title>
+    <g id="Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon-aircond" fill="#333333" fill-rule="nonzero">
+            <path d="M21,11 L3,11 C1.9,11 1,10.1 1,9 L1,8 C1,6.9 1.9,6 3,6 L21,6 C22.1,6 23,6.9 23,8 L23,9 C23,10.1 22.1,11 21,11 Z M21,8 L3,8 L3,9 L21,9 L21,8 Z" id="Shape"></path>
+            <path d="M12,21 C11.45,21 11,20.55 11,20 L11,12 C11,11.45 11.45,11 12,11 C12.55,11 13,11.45 13,12 L13,20 C13,20.55 12.55,21 12,21 Z" id="Path"></path>
+            <path d="M8,17 C7.45,17 7,16.55 7,16 L7,12 C7,11.45 7.45,11 8,11 C8.55,11 9,11.45 9,12 L9,16 C9,16.55 8.55,17 8,17 Z" id="Path"></path>
+            <path d="M16,17 C15.45,17 15,16.55 15,16 L15,12 C15,11.45 15.45,11 16,11 C16.55,11 17,11.45 17,12 L17,16 C17,16.55 16.55,17 16,17 Z" id="Path"></path>
+        </g>
+    </g>
+</svg>

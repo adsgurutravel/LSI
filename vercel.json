@@ -1,0 +1,39 @@
+{
+  "version": 2,
+  "builds": [
+    { "src": "pages/**/*.html", "use": "@vercel/static" },
+    { "src": "api/**/*.js", "use": "@vercel/node" }
+  ],
+  "routes": [
+    { "src": "/", "dest": "/pages/index.html" },
+    { "src": "/booking", "dest": "/pages/booking.html" },
+    { "src": "/car", "dest": "/pages/car.html" },
+    { "src": "/thankyou", "dest": "/pages/thankyou.html" },
+    { "src": "/contact", "dest": "/pages/contact.html" },
+    { "src": "/admin/dashboard", "dest": "/api/dashboard" },
+    { "src": "/admin", "dest": "/api/dashboard" },
+    { "src": "/api/(.*)", "dest": "/api/$1" },
+    { "src": "/assets/(.*)", "dest": "/assets/$1" },
+    { "src": "/scripts/(.*)", "dest": "/scripts/$1" },
+    { "src": "/ai-assistant/(.*)", "dest": "/ai-assistant/$1" }
+  ],
+  "env": {
+    "SUPABASE_URL": "@supabase_url",
+    "SUPABASE_ANON_KEY": "@supabase_anon_key",
+    "WASAPBOT_API_KEY": "@wasapbot_api_key",
+    "BOOSTSPACE_API_KEY": "@boostspace_api_key",
+    "FLOWLU_API_KEY": "@flowlu_api_key",
+    "PABBLY_API_KEY": "@pabbly_api_key",
+    "UCHAT_API_KEY": "@uchat_api_key",
+    "ADSUMO_API_KEY": "@adsumo_api_key",
+    "GREENMATRIX_API_KEY": "@greenmatrix_api_key",
+    "RENTSYS_API_KEY": "@rentsys_api_key",
+    "BAYARCASH_API_KEY": "@bayarcash_api_key",
+    "AI_ASSISTANT_API_KEY": "@ai_assistant_api_key",
+    "AI_ASSISTANT_MODEL": "@ai_assistant_model"
+  },
+  "github": {
+    "enabled": true,
+    "silent": false
+  }
+}

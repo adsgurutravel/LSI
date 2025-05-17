@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200px" height="50px" viewBox="0 0 200 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>AmriTravel Logo</title>
+    <defs>
+        <linearGradient x1="0%" y1="0%" x2="100%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#FFD700" offset="0%"></stop>
+            <stop stop-color="#FFA500" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Logo" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="AmriTravel-Logo">
+            <rect id="Background" fill="#333333" x="0" y="0" width="200" height="50" rx="8"></rect>
+            <path d="M20,10 L30,40 L25,40 L23,34 L12,34 L10,40 L5,40 L15,10 L20,10 Z M21,29 L17.5,18 L14,29 L21,29 Z" id="A" fill="url(#linearGradient-1)" fill-rule="nonzero"></path>
+            <path d="M35,10 L35,40 L40,40 L40,28 L45,28 C50.5228475,28 55,23.5228475 55,18 C55,12.4771525 50.5228475,8 45,8 L35,10 Z M40,14 L45,14 C47.7614237,14 50,16.2385763 50,19 C50,21.7614237 47.7614237,24 45,24 L40,24 L40,14 Z" id="m" fill="url(#linearGradient-1)" fill-rule="nonzero"></path>
+            <path d="M60,10 L60,40 L65,40 L65,28 L70,28 L75,40 L80,40 L74,26.5 C77.5,25 80,21.5 80,18 C80,12.4771525 75.5228475,8 70,8 L60,10 Z M65,14 L70,14 C72.7614237,14 75,16.2385763 75,19 C75,21.7614237 72.7614237,24 70,24 L65,24 L65,14 Z" id="r" fill="url(#linearGradient-1)" fill-rule="nonzero"></path>
+            <path d="M85,10 L85,40 L90,40 L90,10 L85,10 Z" id="i" fill="url(#linearGradient-1)" fill-rule="nonzero"></path>
+            <path d="M100,10 L110,40 L105,40 L103,34 L92,34 L90,40 L85,40 L95,10 L100,10 Z M101,29 L97.5,18 L94,29 L101,29 Z" id="T" fill="#FFFFFF" fill-rule="nonzero"></path>
+            <path d="M115,10 L115,40 L120,40 L120,28 L125,28 L130,40 L135,40 L129,26.5 C132.5,25 135,21.5 135,18 C135,12.4771525 130.522847,8 125,8 L115,10 Z M120,14 L125,14 C127.761424,14 130,16.2385763 130,19 C130,21.7614237 127.761424,24 125,24 L120,24 L120,14 Z" id="r" fill="#FFFFFF" fill-rule="nonzero"></path>
+            <path d="M140,25 C140,33.2842712 146.715729,40 155,40 C163.284271,40 170,33.2842712 170,25 C170,16.7157288 163.284271,10 155,10 C146.715729,10 140,16.7157288 140,25 Z M145,25 C145,19.4771525 149.477153,15 155,15 C160.522847,15 165,19.4771525 165,25 C165,30.5228475 160.522847,35 155,35 C149.477153,35 145,30.5228475 145,25 Z" id="a" fill="#FFFFFF" fill-rule="nonzero"></path>
+            <path d="M175,10 L175,35 L190,35 L190,40 L170,40 L170,10 L175,10 Z" id="v" fill="#FFFFFF" fill-rule="nonzero"></path>
+            <path d="M195,10 L195,40 L190,40 L190,10 L195,10 Z" id="e" fill="#FFFFFF" fill-rule="nonzero"></path>
+            <path d="M30,45 L170,45 L170,47 L30,47 L30,45 Z" id="Line" fill="#FFD700" fill-rule="nonzero"></path>
+        </g>
+    </g>
+</svg>

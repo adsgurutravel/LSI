@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Door Icon</title>
+    <g id="Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon-door" fill="#333333" fill-rule="nonzero">
+            <path d="M19,19 L19,5 C19,3.9 18.1,3 17,3 L7,3 C5.9,3 5,3.9 5,5 L5,19 L3,19 L3,21 L21,21 L21,19 L19,19 Z M17,19 L7,19 L7,5 L17,5 L17,19 Z" id="Shape"></path>
+            <path d="M15,11 L15,13 C15,14.1 14.1,15 13,15 C11.9,15 11,14.1 11,13 L11,11 C11,9.9 11.9,9 13,9 C14.1,9 15,9.9 15,11 Z" id="Path"></path>
+        </g>
+    </g>
+</svg>
